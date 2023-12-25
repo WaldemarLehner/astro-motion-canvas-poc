@@ -1,0 +1,22 @@
+---
+import "../styles/indes.scss"
+import MotionCanvasAnimation from "../components/MotionCanvasAnimation.astro"
+
+import ExampleAnimationUrl from "../animations/exampleAnimation?url"
+console.log(">>> "+ExampleAnimationUrl)
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		<h1>Astro + Motion Canvas POC</h1>
+		<p>An Example / Proof of Concept on Embedding Animations made with Motion Canvas into an Astro v4 App. (no SSR of animations, no Rendering)</p>
+		<MotionCanvasAnimation url={ExampleAnimationUrl} />
+	</body>
+</html>
