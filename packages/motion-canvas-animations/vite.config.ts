@@ -1,19 +1,24 @@
 import { defineConfig } from "vite";
-import { default as motionCanvasX } from "@motion-canvas/vite-plugin";
+import motionCanvas from "@motion-canvas/vite-plugin";
 import { globSync } from "glob";
-
-const motionCanvas = motionCanvasX.default;
+import { visualizer } from "rollup-plugin-visualizer";
 
 export default defineConfig({
   plugins: [
-    motionCanvas({
-      project: globSync("./src/*/*.ts").map((e) => `./${e}`),
+    motionCanvas.default({
+      project: globSync("./src/*/*.ts").map((e) => "./" + e),
+    }),
+    visualizer({
+      emitFile: true,
+      filename: "stats-treemap.html",
+      template: "treemap",
     }),
   ],
   build: {
     rollupOptions: {
       output: {
         dir: "./dist",
+        minifyInternalExports: false,
         entryFileNames: "[name].js",
       },
     },
