@@ -5,7 +5,7 @@ import { createRef, linear, makeProject } from "@motion-canvas/core";
 const ImageSource =
   "https://images.unsplash.com/photo-1685901088371-f498db7f8c46";
 
-const scene = makeScene2D(function* (view) {
+export default makeScene2D(function* (view) {
   view.fill("#141414");
 
   const maskRef = createRef<Img>();
@@ -19,7 +19,7 @@ const scene = makeScene2D(function* (view) {
       <Img
         ref={maskRef}
         size={250}
-        src="/img/logo_dark.svg"
+        src="https://motioncanvas.io/img/logo_dark.svg"
         compositeOperation={"destination-in"}
       />
       {/** !!! Notice how the roles got reversed in comparison to source-in
@@ -30,10 +30,4 @@ const scene = makeScene2D(function* (view) {
 
   yield maskRef().rotation(360, 4, linear);
   yield* valueRef().x(-100, 1.5).wait(0.5).to(100, 1.5).wait(0.5);
-});
-
-export default makeProject({
-  //      vvvvvvv- Type 'SceneDescription<ThreadGeneratorFactory<View2D>>' is missing the following properties from type
-  //               'FullSceneDescription<unknown>': name, size, resolutionScale, variables, and 4 more.ts(2740)
-  scenes: [scene],
 });

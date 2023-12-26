@@ -1,23 +1,8 @@
 {
-  "name": "astro-motion-canvas-poc",
-  "type": "module",
-  "version": "0.0.1",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/check": "^0.3.4",
-    "@motion-canvas/2d": "^3.11.0",
-    "@motion-canvas/core": "^3.11.0",
-    "@motion-canvas/player": "^3.11.0",
-    "astro": "^4.0.7",
-    "typescript": "^5.3.3"
-  },
-  "devDependencies": {
-    "sass": "^1.69.5"
+    "mc:dev": "cd packages/motion-canvas-animations && npm run serve"
   }
 }
